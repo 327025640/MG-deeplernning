@@ -4,24 +4,24 @@
 
 | 索引 | 代码范围 | 版本依据 |
 |---|---|---|
-| [Figure1](figures/Figure1.md) | 疾病覆盖、冻结 UMAP、样本级 pseudobulk DEG 与 GO | Disease17 主分析与图件收尾；全样本覆盖核查分支单独标注 |
-| [Figure2](figures/Figure2.md) | NMF、参考签名、疾病 usage、平台内差值与 MP04 | 冻结 consensus **12 MP** |
-| [Figure3](figures/Figure3.md) | 30 簇身份、M1/M2-like 连续评分、疾病组成 | 冻结 res0.6 及其现行图源 |
-| [Figure4](figures/Figure4.md) | clean24 FUN8、CollecTRI ULM、转录相似性、pan14 轨迹与 PTG | 冻结轨迹与逐簇 TF Top3 |
-| [Figure5](figures/Figure5.md) | PTG14 模型、PPI/PCSF、seed42 网络、权重、GO 与模型内扰动 | **b=10、w=3、g=3，seed42：82 节点、81 骨架边；76 个模型证据节点、6 个连接节点** |
-| [Figure6](figures/Figure6.md) | Disease vs Ctrl 全基因模型、SHAP、逐病 PCSF、药物网络接近度与双支持 Top3 | **30–75 节点方案**；15 病有网络，HD 无合格网络 |
-| [共享上游](figures/Shared.md) | 图谱构建来源、冻结颜色、签名契约和第三方许可 | 保留原始脚本与配置 |
+| [fig1](fig1/README.md) | 疾病覆盖、冻结 UMAP、样本级 pseudobulk DEG 与 GO | Disease17 主分析与图件收尾；共享图谱上游和配色位于本目录 |
+| [fig2](fig2/README.md) | NMF、参考签名、疾病 usage、平台内差值与 MP04 | 冻结 consensus **12 MP** |
+| [fig3](fig3/README.md) | 30 簇身份、M1/M2-like 连续评分、疾病组成 | 冻结 res0.6 及其现行图源 |
+| [fig4](fig4/README.md) | clean24 FUN8、CollecTRI ULM、转录相似性、pan14 轨迹与 PTG | 冻结轨迹与逐簇 TF Top3 |
+| [fig5](fig5/README.md) | PTG14 模型、PPI/PCSF、seed42 网络、权重、GO 与模型内扰动 | **b=10、w=3、g=3，seed42：82 节点、81 骨架边；76 个模型证据节点、6 个连接节点** |
+| [fig6](fig6/README.md) | Disease vs Ctrl 全基因模型、SHAP、逐病 PCSF、药物网络接近度与双支持 Top3 | **30–75 节点方案**；15 病有网络，HD 无合格网络 |
 
 Figure1–4 的分组沿用已有溯源索引，便于按分析内容查找；源文件中的历史 Fig2/Fig3 名称保留，不自动重命名。最终拼版 panel 字母由 Illustrator 排版决定。
 
 ## 文件组织与来源
 
-- `source/project/` 对应原 `D:/data/microglia_new/` 下的代码。
-- `source/outputs/` 对应原 `E:/micro_output/` 下随分析保存的代码和白名单配置。
+- 根目录按 `fig1`–`fig6` 组织，各目录的 `README.md` 列出对应代码和用途。
+- 每图的参数和映射放入 `config/`；共享图谱上游放入 `fig1/upstream/`；被当前脚本引用的辅助版本放入对应图的 `dependencies/`。
+- 两套冻结 CauFinder 适配器分别位于 `fig5/CauFinder/`、`fig6/CauFinder/`。
 - [code_manifest.csv](code_manifest.csv) 记录每个来源文件的归属、用途、仓库路径、原始路径、字节数及 SHA256。
 - [dependency_inventory.csv](dependency_inventory.csv) 列出源码中静态识别的 R 包和 Python import 名称，包含标准库及本地模块，**不是安装清单或锁定环境**。
 
-脚本按原字节复制，保留原始路径、参数、注释、来源哈希及版本。`.gitattributes` 禁用自动换行转换，使仓库中的脚本哈希可与本地来源核对。当前图件登记所引用的准确生产脚本也已收录；例如 Figure5B 的实际生成脚本位于原归档目录，这是当前登记确认的来源，不是按目录日期推定的替代版本。
+仓库目录按图号整理，脚本内容仍保留原始路径、参数、注释和版本，来源位置仅在清单中记录。`.gitattributes` 禁用自动换行转换，使脚本哈希可与原版本核对。独立样本核查、混合 GSM 排除核查和独立输入核验脚本不纳入当前代码目录；正式分析脚本中的必要输入检查保留。
 
 ## 使用条件
 
@@ -37,4 +37,4 @@ Figure6 的 30–75 主运行复用了较早参数扫描产物，因此同时保
 
 ## 第三方代码许可
 
-两套 CauFinder 适配器按冻结版本分别保留，来源为 [CauFinder](https://github.com/ChengmingZhang-CAS/CauFinder-main)，沿用随原适配器保存的 [MIT License](source/outputs/分析审阅中心/待审阅/PTG02_CD_分支疾病与调控候选/data/pan14_disease/caufinder_adapter/LICENSE)。本次未给整个研究项目另行指定开源许可证。
+两套 CauFinder 适配器按冻结版本分别保留，来源为 [CauFinder](https://github.com/ChengmingZhang-CAS/CauFinder-main)，沿用随原适配器保存的 [MIT License](fig5/CauFinder/LICENSE)。本次未给整个研究项目另行指定开源许可证。
