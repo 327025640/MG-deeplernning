@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-22",
+  "scope": "代码归档、当前版本映射和复制完整性；未重跑科研分析",
+  "source_files": 130,
+  "r_scripts": 77,
+  "python_scripts": 39,
+  "r_syntax": "77/77 PASS (R 4.4.3)",
+  "python_syntax": "39/39 PASS (AST parse only)",
+  "original_and_copy_sha256": "ALL PASS",
+  "source_allowlist": "ALL PASS",
+  "local_markdown_links": "ALL PASS",
+  "analysis_execution": false,
+  "notes": [
+    "R启动locale警告不影响parse；未source执行",
+    "第三方CauFinder原docstring转义SyntaxWarning保留",
+    "部分历史R执行异常退出状态未改写"
+  ]
+}

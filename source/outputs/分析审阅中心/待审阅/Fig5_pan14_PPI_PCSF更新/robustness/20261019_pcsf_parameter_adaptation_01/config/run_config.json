@@ -1,0 +1,116 @@
+{
+  "controls": {
+    "edge_cost_noise_applied_to": "original effective real-edge cost (base cost + frozen OI hub penalty); virtual-root edges remain unchanged",
+    "edge_cost_sigma": 0.1,
+    "eligible_parameter_rule": "at least one model seed with >=1 selected real PCSF backbone edge",
+    "repeats": 20,
+    "types": [
+      "edge_cost",
+      "reward_shuffle",
+      "degree_stratified_reward_shuffle"
+    ]
+  },
+  "created_local": "2026-10-19T21:18:25+08:00",
+  "data_dictionary_sha256": "46056ac0ab3d6934d7aea5edefd3eac97b4445ab4e9ced9452f4db12b0727cc2",
+  "execution_script_sha256": "cfb8db2f39934cc76ce7d63becde2c9382cdff4fc77ade18789eb2dc2be68b88",
+  "feasible_comparator": [
+    "raw pcst_fast",
+    "root_only_empty",
+    "best_singleton",
+    "best_single_real_PPI_edge",
+    "root_star_prize_gt_w"
+  ],
+  "grid": {
+    "b": [
+      2,
+      5,
+      10
+    ],
+    "g": [
+      2,
+      3,
+      5,
+      6
+    ],
+    "n_base_calls": 360,
+    "n_parameter_sets": 36,
+    "w": [
+      1,
+      3,
+      6
+    ]
+  },
+  "input_hashes": {
+    "full_gene_mapping_audit.csv": "06176645800fa0fb74624a0aa92eb6ef93e3a563973c9f7c721e45341a8ec92e",
+    "full_seed_gene_weights.csv": "0934f7af0e99824c323a8b16715e03d012f22e548210ed0182e27c15b0043474",
+    "oi_base_edge_array.tsv": "3d4582873a5af3ad9e9e757720938f1fb5f5938b271eef5001e4e84b8f26a909",
+    "oi_base_node_order.tsv": "6b461183f018a7e0100b7cb7a12ac702f5a97cf49d6769a24880ee849faf9146",
+    "oi_input_edges.tsv": "4936758bda0c90299bad375618d8e83f6b37acd421b6c9be9da4a3c3c48c5e11",
+    "oi_input_nodes.csv": "49a5bc84d83edb250ac3c09394361a3ce40d9142c80782837be69f0820247bff",
+    "ppi_edges_ge2.tsv": "25ffbe476849f4017c30caea3844b5b50b7a16c8d2bde92cc266e641c99fdff1",
+    "ppi_nodes_ge2.csv": "83f600273f07a8650b4e79bc5b61dd19de6a124a54fe20e2f0769cebf4101bca",
+    "run_manifest.json": "31255d93d607337487f730d4071349657c8af4b2e33792f0ec92f41413062148",
+    "seed_source_chain_verification.json": "1b9720e3e1ba6241b6d96850ea50d9c095fea0e386b9604630f3718faee5135c",
+    "solver_objective_audit.csv": "29ca31b785011ecb9ca3bf9a18c628fc7875dc94cebae47f30a2efa15de032af",
+    "solver_quality_audit_manifest.json": "a292a743d3a06e49e09d73ccbc9e1e617a5fb91b18308e7f1ab1fff6e93bbdfe",
+    "source_input_sha256_manifest.csv": "fd223b960232437413fe73f8efde7f6143c9477e8ad215b15d9d425c55b33074"
+  },
+  "model": {
+    "Ctrl": "reference only",
+    "branch": "PTG14 pan14",
+    "features": 4843,
+    "labels": {
+      "Neurological": 0,
+      "Tumor": 1
+    },
+    "model_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "reward": "mean_abs_SHAP / max across all 4,843 features"
+  },
+  "objective": "J=sum(selected real+root edge costs)+sum(unselected real-node prizes)",
+  "ppi": {
+    "all_components_retained": true,
+    "base_cost": 1.0,
+    "components": 34,
+    "edges": 83065,
+    "filter": "number>=2",
+    "nodes": 12512,
+    "source_audit": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig5_pan14_PPI_PCSF更新\\robustness\\20261019_pcsf_quality_01"
+  },
+  "run_id": "20261019_pcsf_parameter_adaptation_01",
+  "software": {
+    "numpy": "1.21.6",
+    "omicsintegrator": "2.3.10",
+    "pandas": "0.23.4",
+    "pcst_fast": "1.0.7",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "python": "3.7.9 (tags/v3.7.9:13c94747c7, Aug 17 2020, 18:58:18) [MSC v.1900 64 bit (AMD64)]"
+  },
+  "solver": {
+    "OI_input_path_compatibility": "byte-identical ASCII-path cache for installed pandas 0.23 C-parser Unicode-path limitation; source remains RUN/inputs/frozen/oi_input_edges.tsv",
+    "OI_version": "2.3.10",
+    "dummy_mode": "terminals",
+    "edge_noise": 0,
+    "hub_penalty": "10^g * degree(u)*degree(v) / ((N-degree(u)-1)*(N-degree(v)-1)+degree(u)*degree(v))",
+    "implementation": "OmicsIntegrator2 Graph.pcsf + installed pcst_fast",
+    "no_extra_component_penalty": true,
+    "num_clusters": 1,
+    "pcst_fast_low_level_last_argument": "verbosity_level=0; installed API has no per-call RNG seed argument",
+    "pcst_fast_version": "1.0.7",
+    "pruning": "strong",
+    "root_edge_cost": "w",
+    "root_prize": 0,
+    "seed": 42
+  },
+  "status": "running"
+}

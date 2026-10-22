@@ -1,0 +1,23 @@
+{
+  "run_id": "reference_seed_assessment_20261019",
+  "parent_run_id": "20261019_pcsf_parameter_adaptation_01",
+  "parameter_id": "b10_w3_g3",
+  "model_seeds": [42,43,44,45,46,47,48,49,50,51],
+  "reference_seed": 42,
+  "methods": {
+    "node_jaccard": "intersection / union of selected real Entrez node sets",
+    "evidence_node_jaccard": "same, restricted to nodes with model SHAP evidence in each seed",
+    "backbone_edge_jaccard": "intersection / union of canonical undirected selected_forest_edges; induced PPI edges excluded",
+    "node_support_denominator": 10,
+    "edge_support_denominator": 10,
+    "majority_threshold": "selected in >=6 of 10 seeds",
+    "core_threshold": "selected in 10 of 10 seeds",
+    "seed_medoid": "highest mean node Jaccard to the other nine seeds; ties broken by ascending seed",
+    "connectivity_comparisons": ["union of seed backbones restricted to the node set", "frozen number>=2 PPI induced on the node set"]
+  },
+  "frozen_inputs_only": true,
+  "pcsf_rerun": false,
+  "model_or_shap_rerun": false,
+  "software": "Python 3.7.9, standard library plus installed NumPy for verifying saved solver arrays",
+  "status": "complete"
+}

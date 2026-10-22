@@ -1,0 +1,26 @@
+Disease_Abbrev,Disease_Class,Disease_Class_CN,Disease_Subclass,Disease_Subclass_CN,Disease_Color_Hex,Disease_Class_Color_Hex,Display_Label,Status
+ctrl,Control,对照,Control,对照,#4DAF4A,#4DAF4A,Control,frozen_2026-08-04
+GLIOMA_IDHmut,Primary_brain_tumor,原发脑肿瘤,Diffuse_glioma,弥漫性胶质瘤,#8C1D18,#B6362D,Glioma IDH-mut,frozen_2026-08-04
+GBM_IDHwt,Primary_brain_tumor,原发脑肿瘤,Glioblastoma,胶质母细胞瘤,#B6362D,#B6362D,Glioblastoma IDH-wt,frozen_2026-08-04
+MEDULLO,Primary_brain_tumor,原发脑肿瘤,Medulloblastoma,髓母细胞瘤,#D85A50,#B6362D,Medulloblastoma,frozen_2026-08-04
+MEL_BM,Brain_metastasis,脑转移瘤,Melanoma_brain_metastasis,黑色素瘤脑转移,#E97451,#E97451,Melanoma brain metastasis,frozen_2026-08-04
+LCBM,Brain_metastasis,脑转移瘤,Lung_cancer_brain_metastasis,肺癌脑转移,#F39C72,#E97451,Lung cancer brain metastasis,frozen_2026-08-04
+AD,Neurodegenerative_disease,神经退行性疾病,Alzheimer_spectrum,阿尔茨海默病谱系,#073B77,#2171B5,Alzheimer's disease,frozen_2026-08-04
+EOAD,Neurodegenerative_disease,神经退行性疾病,Alzheimer_spectrum,阿尔茨海默病谱系,#3F88C5,#2171B5,Early-onset Alzheimer's disease,frozen_2026-08-04
+PD,Neurodegenerative_disease,神经退行性疾病,Synucleinopathy,突触核蛋白病谱系,#007F8B,#2171B5,Parkinson's disease,frozen_2026-08-04
+DLBD_PD,Neurodegenerative_disease,神经退行性疾病,Synucleinopathy,突触核蛋白病谱系,#4DBBC5,#2171B5,DLBD/PD,frozen_2026-08-04
+ALS,Neurodegenerative_disease,神经退行性疾病,Motor_neuron_disease,运动神经元病谱系,#2F6FB0,#2171B5,ALS,frozen_2026-08-04
+ALS_FTD,Neurodegenerative_disease,神经退行性疾病,Motor_neuron_disease,运动神经元病谱系,#92BCE0,#2171B5,ALS-FTD,frozen_2026-08-04
+FTD,Neurodegenerative_disease,神经退行性疾病,FTD_PSP_spectrum,额颞叶痴呆/PSP谱系,#5D4E9A,#2171B5,FTD,frozen_2026-08-04
+PSP,Neurodegenerative_disease,神经退行性疾病,FTD_PSP_spectrum,额颞叶痴呆/PSP谱系,#A6A2D4,#2171B5,PSP,frozen_2026-08-04
+HD,Neurodegenerative_disease,神经退行性疾病,Huntington_disease,Huntington病,#6B7C93,#2171B5,Huntington's disease,frozen_2026-08-04
+MS,Neuroinflammatory_immune_disease,神经炎症/免疫疾病,Multiple_sclerosis,多发性硬化,#008C9E,#008C9E,Multiple sclerosis,frozen_2026-08-04
+MDD,Neuropsychiatric_disease,神经精神疾病,Major_depressive_disorder,重性抑郁障碍,#756BB1,#756BB1,Major depressive disorder,frozen_2026-08-04
+Ctrl,Control,对照,Control,对照,#4DAF4A,#4DAF4A,Control,frozen_2026-08-29
+LGG,Primary_brain_tumor,原发脑肿瘤,Diffuse_glioma,弥漫性胶质瘤,#8C1D18,#B6362D,Lower-grade glioma,frozen_2026-08-29
+Anaplastic_astrocytoma,Primary_brain_tumor,原发脑肿瘤,Diffuse_glioma,弥漫性胶质瘤,#A6402F,#B6362D,Anaplastic astrocytoma,frozen_2026-08-29
+rGBM,Primary_brain_tumor,原发脑肿瘤,Glioblastoma,胶质母细胞瘤,#B6362D,#B6362D,rGBM (grade IV),frozen_2026-08-29
+pGBM,Primary_brain_tumor,原发脑肿瘤,Glioblastoma,胶质母细胞瘤,#E2725B,#B6362D,pGBM (<grade IV),frozen_2026-08-29
+MB,Primary_brain_tumor,原发脑肿瘤,Medulloblastoma,髓母细胞瘤,#D85A50,#B6362D,Medulloblastoma,frozen_2026-08-29
+DLB,Neurodegenerative_disease,神经退行性疾病,Synucleinopathy,突触核蛋白病谱系,#1B9AA3,#2171B5,Dementia with Lewy bodies,frozen_2026-08-29
+FTD_MND,Neurodegenerative_disease,神经退行性疾病,Motor_neuron_disease,运动神经元病谱系,#5F8FC9,#2171B5,FTD-MND,frozen_2026-08-29

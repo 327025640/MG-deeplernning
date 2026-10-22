@@ -1,0 +1,231 @@
+{
+  "analysis": "Per-disease compact PCSF 30-75 node parameter selection and independent stability evaluation",
+  "analysis_root": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块",
+  "base_grid": {
+    "b": [
+      0.25,
+      0.5,
+      1.0,
+      1.5,
+      2.0,
+      2.5,
+      3.0,
+      3.5,
+      4.0,
+      4.5,
+      5.0,
+      5.5,
+      6.0
+    ],
+    "expected_rows": 1664,
+    "g": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "recompute_base_grid": false,
+    "reuse_policy": "hash-verified b=2 and accepted b=3..6 base outputs; only missing b=0.25,0.5,1,1.5,2.5 solved",
+    "source_run": "20261021_disease_compact_le50_parameter_selection_01_base_scan",
+    "w": [
+      3,
+      6
+    ]
+  },
+  "degree_stratified_null": {
+    "degree_bin_method": "accepted equal-degree groups accumulated to >=100; trailing remainder merged into prior bin; single small bin retained",
+    "measured_zero_reward_nodes_included": true,
+    "no_evidence_connectors_remain_zero": true,
+    "only_mapped_model_evidence_nodes_permuted": true,
+    "repeats": 100,
+    "root_terminals_recomputed_after_shuffle": true,
+    "stage_seed_key": "42|Disease|compact_30_75_degree_stratified_shuffle_v1|replicate"
+  },
+  "diseases": [
+    "AD",
+    "ALS",
+    "ALS_FTD",
+    "DLB",
+    "DLBD_PD",
+    "EOAD",
+    "FTD",
+    "FTD_MND",
+    "GBM",
+    "HD",
+    "LCBM",
+    "LGG",
+    "MB",
+    "MS",
+    "PD",
+    "PSP"
+  ],
+  "evaluation": {
+    "independent_from_selection": true,
+    "repeats": 100,
+    "selection_parameters_sha_locked": true,
+    "stage_seed_key": "42|Disease|compact_30_75_evaluation_v1|replicate"
+  },
+  "input_identity": {
+    "features_per_disease": 17645,
+    "mapped_model_entrez_per_disease": 11968,
+    "ppi_edges": 83065,
+    "ppi_filter": "number>=2",
+    "ppi_nodes": 12512,
+    "retain_all_background_components": true
+  },
+  "model_root": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_全基因CauFinder",
+  "prohibited_in_this_run": [
+    "model_training",
+    "SHAP_recompute",
+    "formal_network_replacement",
+    "drug_analysis",
+    "GO",
+    "cross_disease_overlap",
+    "formal_figures"
+  ],
+  "qualification": {
+    "all_true_nodes_included_no_component_extraction": true,
+    "full_selected_skeleton_one_component": true,
+    "no_candidate_status": "no_eligible_candidate",
+    "node_count_inclusive": [
+      30,
+      75
+    ],
+    "require_tree_backbone": true,
+    "size_is_design_target_not_biological_truth": true,
+    "uniform_across_diseases_no_special_case": true
+  },
+  "run_id": "20261021_disease_compact_30_75_parameter_selection_01",
+  "scan_root": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan",
+  "script_hashes": {
+    "driver_sha256": "1291b34da50234dad0cd18fb10b74101416eee8446b5a67ecb66d764217ab29d",
+    "patched_runtime_sha256": "eb83cf115a50f7131e0cd1274c5728bfd23c86aff504d61937f24adbc981dac1",
+    "source_runtime_sha256": "800ea5a42f5b7198f8ac6b9d9643a0cec5dd98c49e1bcae7125b0196fb41eca2"
+  },
+  "selection": {
+    "formula": "c'_e=(base_cost+hub_penalty)*exp(epsilon-sigma^2/2); real PPI edges only; virtual-root costs=w",
+    "noise_sigma": 0.1,
+    "paired_across_candidate_parameters_within_disease": true,
+    "quantile": "float64; NumPy linear interpolation; unrounded values",
+    "repeats": 20,
+    "rule": [
+      "node_Jaccard_Q25_desc",
+      "node_Jaccard_median_desc",
+      "baseline_full_model_SHAP_retention_desc",
+      "b_asc",
+      "w_asc",
+      "g_asc"
+    ],
+    "seed_key": "42|Disease|compact_le50_selection_v1|replicate; SHA256 first 4 bytes little-endian; parameter_id excluded"
+  },
+  "software": {
+    "numpy_version": "1.21.6",
+    "pandas_version": "0.23.4",
+    "python": "3.7.9",
+    "rng": "NumPy RandomState MT19937"
+  },
+  "solver": {
+    "base_cost": 1.0,
+    "dummy_mode": "terminals",
+    "hub_penalty_formula": "10^g*deg(u)*deg(v)/((N-deg(u)-1)*(N-deg(v)-1)+deg(u)*deg(v))",
+    "implementation": "OmicsIntegrator2 2.3.10 + pcst-fast 1.0.7",
+    "legal_witness_comparison": [
+      "raw_pcst_fast",
+      "root_only_empty",
+      "best_single_node",
+      "best_single_real_PPI_edge",
+      "root_star_prize_gt_w"
+    ],
+    "objective": "sum(selected augmented-edge costs)+sum(unselected scaled node prizes); root-edge w charged once",
+    "pruning": "strong",
+    "seed": 42
+  },
+  "source_artifacts": [
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\config\\run_config.json",
+      "sha256": "03ba1dd6e92bc3240e04ab35428136a569524799fd4b6c71262a15d65dbf85d8",
+      "size_bytes": 7907
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\config\\seed_registry.csv",
+      "sha256": "fe2ee34d11a1174b096c50e7323dd2955dfa3431f3c4278ab2b1ec546ba3f4ff",
+      "size_bytes": 461324
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\config\\selected_parameters.lock.json",
+      "sha256": "56039b74313b4a44c2e39c03829b0429e866c7505de6efe39d9985fa48627bf5",
+      "size_bytes": 1062
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\summaries\\parameter_qualification_all_104.csv",
+      "sha256": "3cdad8595afae6dbe7e83837da1449d73186fe5c7757aa62c7b2b2c57886fe40",
+      "size_bytes": 2517572
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\summaries\\selection_candidate_summary.csv",
+      "sha256": "fe8f7cdfeab50d27dc8350204e9d1038f4ab24b07155212ebe23084f79fa97aa",
+      "size_bytes": 15815
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\summaries\\selection_candidate_20repeats.csv",
+      "sha256": "9984adc09a40e6d31f5644f95c5f2e59fab90c1ead5b55792b3c5c85c78c1440",
+      "size_bytes": 412140
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan\\config\\run_config.json",
+      "sha256": "13b3e4a188dcb742f65b60bf8a69dccfec12c95a0a5607d412b9f1cc9e1b156e",
+      "size_bytes": 3746
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan\\summaries\\size_target_summary_manifest.json",
+      "sha256": "f53399f753efc99ce139660075f33cf5be97e467f224d4d2dcb7914761459635",
+      "size_bytes": 837
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan\\summaries\\per_disease_parameter_network_metrics.csv",
+      "sha256": "785f7f7b70613cd9f085f00868c95a9cb65add78fb41d0175a7a327120f5e78e",
+      "size_bytes": 3196529
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan\\summaries\\base_run_status.csv",
+      "sha256": "b130f518a30ef39cbf37924e62abc8e8df1e88fe0d739a688ceeb7f28908d4e1",
+      "size_bytes": 519113
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_le50_parameter_selection_01\\base_scan\\inputs\\input_sha256_manifest.csv",
+      "sha256": "6e9e7e3897b6e5df1dac4aca7fcb5000e2364762befaadbd08f23fa45d27ba59",
+      "size_bytes": 43121
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\config\\run_config.json",
+      "sha256": "629bdb7c0278bb4f341a58e8def4086f1cfa3933110bd521fd970d9a3beb3913",
+      "size_bytes": 3924
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\tables\\ppi_edges_ge2.tsv",
+      "sha256": "e4669fd1c3a29aee26251be514b4910aeb09d2e15cec826c6d6393582569dfc0",
+      "size_bytes": 4865117
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\tables\\ppi_node_audit.csv",
+      "sha256": "3f942a09d8f35977bb91974c6ca2a0c45afa1ab9f338de0b8fa3fbef8a41495c",
+      "size_bytes": 327733
+    },
+    {
+      "path": "D:\\data\\microglia_new\\scripts\\fig6_disease_pcsf_size_target_scan.py",
+      "sha256": "800ea5a42f5b7198f8ac6b9d9643a0cec5dd98c49e1bcae7125b0196fb41eca2",
+      "size_bytes": 125010
+    },
+    {
+      "path": "E:\\micro_output\\分析审阅中心\\待审阅\\Fig6_疾病vsCtrl_SHAP_PCSF模块\\robustness\\20261021_disease_compact_30_75_parameter_selection_01\\scripts\\pcsf_runtime_patched.py",
+      "sha256": "eb83cf115a50f7131e0cd1274c5728bfd23c86aff504d61937f24adbc981dac1",
+      "size_bytes": 124126
+    },
+    {
+      "path": "D:\\data\\microglia_new\\scripts\\fig6_disease_compact_30_75_parameter_selection.py",
+      "sha256": "1291b34da50234dad0cd18fb10b74101416eee8446b5a67ecb66d764217ab29d",
+      "size_bytes": 104182
+    }
+  ],
+  "status": "compact_30_75_selection_and_stability; formal_networks_unchanged"
+}

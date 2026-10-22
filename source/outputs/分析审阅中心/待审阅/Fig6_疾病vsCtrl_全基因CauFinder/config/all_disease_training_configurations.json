@@ -1,0 +1,1303 @@
+{
+  "input_object_sha256": "0f0bff5b943eee73b59c411a4416d02a701f1171409f30b911fbfd67812b7bcc",
+  "seed": 42,
+  "current_diseases": [
+    "AD",
+    "ALS",
+    "ALS_FTD",
+    "DLB",
+    "DLBD_PD",
+    "EOAD",
+    "FTD",
+    "FTD_MND",
+    "GBM",
+    "HD",
+    "LCBM",
+    "LGG",
+    "MB",
+    "MS",
+    "PD",
+    "PSP"
+  ],
+  "ctrl_split_generated_once_and_reused": true,
+  "split": {
+    "train": 0.64,
+    "validation": 0.16,
+    "final_eval": 0.2,
+    "unit": "cell"
+  },
+  "model_kwargs": {
+    "n_latent": 25,
+    "n_causal": 5,
+    "n_hidden": 128,
+    "n_layers_encoder": 0,
+    "n_layers_decoder": 0,
+    "n_layers_dpd": 0,
+    "dropout_rate_encoder": 0.0,
+    "dropout_rate_decoder": 0.0,
+    "dropout_rate_dpd": 0.0,
+    "use_batch_norm": "none",
+    "use_batch_norm_dpd": true,
+    "pdp_linear": true
+  },
+  "batch_size": 128,
+  "learning_rate": 0.0005,
+  "optimizer": "Adam",
+  "weight_decay": 1e-06,
+  "n_x": 5,
+  "n_alpha": 5,
+  "n_beta": 10,
+  "stage_training": true,
+  "epoch_rule": "min(round((20000/n_train_cells)*400),400), Python round; per disease+Ctrl",
+  "class_weight_rule": "N_train/(2*N_class_train), applied once to per-cell BCE before batch mean",
+  "disease_configurations": {
+    "AD": {
+      "Disease": "AD",
+      "n_train": 81383,
+      "n_positive_train": 52337,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 0.7774901121577469,
+      "w_negative": 1.4009330028231082,
+      "max_epochs": 98,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 10,
+          "n_epochs": 10,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 11,
+          "epoch_end_1based": 40,
+          "n_epochs": 30,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 41,
+          "epoch_end_1based": 69,
+          "n_epochs": 29,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 70,
+          "epoch_end_1based": 98,
+          "n_epochs": 29,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "ALS": {
+      "Disease": "ALS",
+      "n_train": 64650,
+      "n_positive_train": 35604,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 0.9079036063363667,
+      "w_negative": 1.1128898987812434,
+      "max_epochs": 124,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 13,
+          "n_epochs": 13,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 14,
+          "epoch_end_1based": 50,
+          "n_epochs": 37,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 51,
+          "epoch_end_1based": 87,
+          "n_epochs": 37,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 88,
+          "epoch_end_1based": 124,
+          "n_epochs": 37,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "ALS_FTD": {
+      "Disease": "ALS_FTD",
+      "n_train": 36781,
+      "n_positive_train": 7735,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 2.377569489334195,
+      "w_negative": 0.6331508641465262,
+      "max_epochs": 218,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 22,
+          "n_epochs": 22,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 23,
+          "epoch_end_1based": 88,
+          "n_epochs": 66,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 89,
+          "epoch_end_1based": 153,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 154,
+          "epoch_end_1based": 218,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "DLB": {
+      "Disease": "DLB",
+      "n_train": 29086,
+      "n_positive_train": 40,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 363.575,
+      "w_negative": 0.5006885629690835,
+      "max_epochs": 275,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 28,
+          "n_epochs": 28,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 29,
+          "epoch_end_1based": 110,
+          "n_epochs": 82,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 111,
+          "epoch_end_1based": 193,
+          "n_epochs": 83,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 194,
+          "epoch_end_1based": 275,
+          "n_epochs": 82,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "DLBD_PD": {
+      "Disease": "DLBD_PD",
+      "n_train": 37844,
+      "n_positive_train": 8798,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 2.1507160718345077,
+      "w_negative": 0.6514494250499208,
+      "max_epochs": 211,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 22,
+          "n_epochs": 22,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 23,
+          "epoch_end_1based": 85,
+          "n_epochs": 63,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 86,
+          "epoch_end_1based": 148,
+          "n_epochs": 63,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 149,
+          "epoch_end_1based": 211,
+          "n_epochs": 63,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "EOAD": {
+      "Disease": "EOAD",
+      "n_train": 34245,
+      "n_positive_train": 5199,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 3.293421811886901,
+      "w_negative": 0.5894959719066308,
+      "max_epochs": 234,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 24,
+          "n_epochs": 24,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 25,
+          "epoch_end_1based": 94,
+          "n_epochs": 70,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 95,
+          "epoch_end_1based": 164,
+          "n_epochs": 70,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 165,
+          "epoch_end_1based": 234,
+          "n_epochs": 70,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "FTD": {
+      "Disease": "FTD",
+      "n_train": 32318,
+      "n_positive_train": 3272,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 4.93856968215159,
+      "w_negative": 0.5563244508710321,
+      "max_epochs": 248,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 25,
+          "n_epochs": 25,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 26,
+          "epoch_end_1based": 100,
+          "n_epochs": 75,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 101,
+          "epoch_end_1based": 174,
+          "n_epochs": 74,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 175,
+          "epoch_end_1based": 248,
+          "n_epochs": 74,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "FTD_MND": {
+      "Disease": "FTD_MND",
+      "n_train": 29181,
+      "n_positive_train": 135,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 108.07777777777778,
+      "w_negative": 0.5023239000206569,
+      "max_epochs": 274,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 28,
+          "n_epochs": 28,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 29,
+          "epoch_end_1based": 110,
+          "n_epochs": 82,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 111,
+          "epoch_end_1based": 192,
+          "n_epochs": 82,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 193,
+          "epoch_end_1based": 274,
+          "n_epochs": 82,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "GBM": {
+      "Disease": "GBM",
+      "n_train": 84574,
+      "n_positive_train": 55528,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 0.7615437256879413,
+      "w_negative": 1.4558631136817461,
+      "max_epochs": 95,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 10,
+          "n_epochs": 10,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 11,
+          "epoch_end_1based": 38,
+          "n_epochs": 28,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 39,
+          "epoch_end_1based": 67,
+          "n_epochs": 29,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 68,
+          "epoch_end_1based": 95,
+          "n_epochs": 28,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "HD": {
+      "Disease": "HD",
+      "n_train": 31790,
+      "n_positive_train": 2744,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 5.792638483965015,
+      "w_negative": 0.5472354196791297,
+      "max_epochs": 252,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 26,
+          "n_epochs": 26,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 27,
+          "epoch_end_1based": 101,
+          "n_epochs": 75,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 102,
+          "epoch_end_1based": 177,
+          "n_epochs": 76,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 178,
+          "epoch_end_1based": 252,
+          "n_epochs": 75,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "LCBM": {
+      "Disease": "LCBM",
+      "n_train": 36772,
+      "n_positive_train": 7726,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 2.3797566658037796,
+      "w_negative": 0.6329959374784824,
+      "max_epochs": 218,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 22,
+          "n_epochs": 22,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 23,
+          "epoch_end_1based": 88,
+          "n_epochs": 66,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 89,
+          "epoch_end_1based": 153,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 154,
+          "epoch_end_1based": 218,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "LGG": {
+      "Disease": "LGG",
+      "n_train": 34838,
+      "n_positive_train": 5792,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 3.0074240331491713,
+      "w_negative": 0.5997039179232941,
+      "max_epochs": 230,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 23,
+          "n_epochs": 23,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 24,
+          "epoch_end_1based": 92,
+          "n_epochs": 69,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 93,
+          "epoch_end_1based": 161,
+          "n_epochs": 69,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 162,
+          "epoch_end_1based": 230,
+          "n_epochs": 69,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "MB": {
+      "Disease": "MB",
+      "n_train": 30982,
+      "n_positive_train": 1936,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 8.001549586776859,
+      "w_negative": 0.5333264477036425,
+      "max_epochs": 258,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 26,
+          "n_epochs": 26,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 27,
+          "epoch_end_1based": 104,
+          "n_epochs": 78,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 105,
+          "epoch_end_1based": 181,
+          "n_epochs": 77,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 182,
+          "epoch_end_1based": 258,
+          "n_epochs": 77,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "MS": {
+      "Disease": "MS",
+      "n_train": 40697,
+      "n_positive_train": 11651,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 1.746502446141962,
+      "w_negative": 0.7005611788198031,
+      "max_epochs": 197,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 20,
+          "n_epochs": 20,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 21,
+          "epoch_end_1based": 79,
+          "n_epochs": 59,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 80,
+          "epoch_end_1based": 138,
+          "n_epochs": 59,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 139,
+          "epoch_end_1based": 197,
+          "n_epochs": 59,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "PD": {
+      "Disease": "PD",
+      "n_train": 36659,
+      "n_positive_train": 7613,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 2.4076579535005913,
+      "w_negative": 0.6310507470908214,
+      "max_epochs": 218,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 22,
+          "n_epochs": 22,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 23,
+          "epoch_end_1based": 88,
+          "n_epochs": 66,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 89,
+          "epoch_end_1based": 153,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 154,
+          "epoch_end_1based": 218,
+          "n_epochs": 65,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    },
+    "PSP": {
+      "Disease": "PSP",
+      "n_train": 32761,
+      "n_positive_train": 3715,
+      "n_negative_ctrl_train": 29046,
+      "w_positive": 4.4092866756393,
+      "w_negative": 0.5639502857536322,
+      "max_epochs": 244,
+      "batch_size": 128,
+      "learning_rate": 0.0005,
+      "optimizer": "Adam",
+      "weight_decay": 1e-06,
+      "n_x": 5,
+      "n_alpha": 5,
+      "n_beta": 10,
+      "stage_schedule": [
+        {
+          "stage": 1,
+          "epoch_start_1based": 1,
+          "epoch_end_1based": 25,
+          "n_epochs": 25,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.01,
+            "feat_l1_loss": 1.0,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.0
+          }
+        },
+        {
+          "stage": 2,
+          "epoch_start_1based": 26,
+          "epoch_end_1based": 98,
+          "n_epochs": 73,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.01,
+            "dpd_loss": 0.01,
+            "fide_kl_loss": 0.0,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 3,
+          "epoch_start_1based": 99,
+          "epoch_end_1based": 171,
+          "n_epochs": 73,
+          "loss_weights": {
+            "rec_loss1": 1.0,
+            "rec_loss2": 1.0,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 1.0,
+            "fide_kl_loss": 0.01,
+            "causal_loss": 0.01
+          }
+        },
+        {
+          "stage": 4,
+          "epoch_start_1based": 172,
+          "epoch_end_1based": 244,
+          "n_epochs": 73,
+          "loss_weights": {
+            "rec_loss1": 0.5,
+            "rec_loss2": 0.5,
+            "z_kl_loss": 0.1,
+            "feat_l1_loss": 0.0,
+            "dpd_loss": 2.0,
+            "fide_kl_loss": 2.0,
+            "causal_loss": 2.0
+          }
+        }
+      ]
+    }
+  }
+}

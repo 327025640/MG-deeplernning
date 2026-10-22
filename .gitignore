@@ -1,0 +1,19 @@
+# 本仓库收录代码和已审核的配置，不收录分析数据与凭据。
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Renviron
+.env
+.env.*
+*.rds
+*.RDS
+*.rda
+*.RData
+*.h5ad
+*.h5
+*.f32
+*.npz
+*.pt
+*.pth
+*.log
